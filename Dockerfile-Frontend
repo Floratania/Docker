@@ -1,0 +1,23 @@
+# Використовуємо офіційний образ Node.js
+FROM node:14
+
+# Встановлюємо робочу директорію
+WORKDIR /app
+
+# Копіюємо файл package.json та package-lock.json для встановлення залежностей
+COPY package*.json ./
+
+# Встановлюємо залежності
+RUN npm install
+
+# RUN npm run build
+# RUN npm build
+
+
+# Копіюємо решту файлів фронтенду
+COPY . .
+
+# Експортуємо порт для доступу
+EXPOSE 3000
+
+CMD ["npm", "start"]
